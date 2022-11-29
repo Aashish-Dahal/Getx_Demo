@@ -10,5 +10,6 @@ class AppData {
 }
 
 final List<AppData> homeData = [
-  AppData(title: "Counter App", icon: const Icon(Icons.add_circle))
+  AppData(title: "Counter App", icon: const Icon(Icons.add_circle)),
+  AppData(title: "Todo App", icon: const Icon(Icons.document_scanner))
 ];
