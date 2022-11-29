@@ -1,19 +1,17 @@
-import 'package:get/get_state_manager/get_state_manager.dart'
-    show GetxController;
+import 'package:get/get.dart'
+    show Get, GetxController, Inst, IntExtension, RxInt;
 
 class CounterController extends GetxController {
-  int _count = 0;
-  int get count => _count;
-
+  final RxInt _count = 0.obs;
+  RxInt get count => _count;
+  static CounterController get to => Get.find();
   void incrementCounter() {
-    _count++;
-    update();
+    _count.value++;
   }
 
   void decrementCounter() {
-    if (_count > 0) {
-      _count--;
+    if (_count.value > 0) {
+      _count.value--;
     }
-    update();
   }
 }

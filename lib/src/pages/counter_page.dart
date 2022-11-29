@@ -18,7 +18,7 @@ import 'package:flutter/material.dart'
         TextAlign,
         TextStyle,
         Widget;
-import 'package:get/get.dart' show Get, GetBuilder, Inst;
+import 'package:get/get.dart' show Get, GetBuilder, Inst, Obx;
 import 'package:getx_demo/src/controllers/counter_controller.dart'
     show CounterController;
 import 'package:getx_demo/src/widgets/atoms/button.dart' show Button;
@@ -28,7 +28,6 @@ class CounterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CounterController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Counter App"),
@@ -42,9 +41,9 @@ class CounterPage extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.grey.shade400, width: 2)),
-            child: GetBuilder<CounterController>(
-              builder: (counter) => Text(
-                counter.count.toString(),
+            child: Obx(
+              () => Text(
+                CounterController.to.count.value.toString(),
                 textAlign: TextAlign.center,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -57,13 +56,13 @@ class CounterPage extends StatelessWidget {
               Button(
                 label: "Increment",
                 onPressed: () {
-                  controller.incrementCounter();
+                  CounterController.to.incrementCounter();
                 },
               ),
               Button(
                 label: "Decrement",
                 onPressed: () {
-                  controller.decrementCounter();
+                  CounterController.to.decrementCounter();
                 },
               )
             ],
