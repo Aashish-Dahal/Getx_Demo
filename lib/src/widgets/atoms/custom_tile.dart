@@ -20,6 +20,7 @@ class CustomListTile extends StatelessWidget {
   final Widget? leading;
   final EdgeInsetsGeometry? contentPadding;
   final String? title;
+  final Widget? subTitle;
   final Color? tileColor;
   final double? minLeadingWidth;
   final Widget? trailing;
@@ -28,6 +29,7 @@ class CustomListTile extends StatelessWidget {
       required this.onTab,
       this.leading,
       this.title,
+      this.subTitle,
       this.contentPadding,
       this.minLeadingWidth,
       this.trailing,
@@ -43,6 +45,7 @@ class CustomListTile extends StatelessWidget {
       onTap: onTab,
       minLeadingWidth: minLeadingWidth ?? 15.0,
       leading: leading,
+      subtitle: subTitle,
       title: Text(
         title ?? '',
       ),

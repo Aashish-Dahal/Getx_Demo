@@ -14,13 +14,17 @@ import 'package:flutter/material.dart'
 
 class Button extends StatelessWidget {
   final String label;
+  final double? minWidth;
   final VoidCallback onPressed;
-  const Button({Key? key, required this.label, required this.onPressed})
+  const Button(
+      {Key? key, required this.label, required this.onPressed, this.minWidth})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      minWidth: minWidth,
+      height: 45,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       elevation: 0,
       color: Colors.orange.shade600,

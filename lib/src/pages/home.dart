@@ -4,6 +4,7 @@ import 'package:flutter/material.dart'
         BuildContext,
         Column,
         EdgeInsets,
+        Padding,
         Scaffold,
         SingleChildScrollView,
         StatelessWidget,
@@ -30,15 +31,30 @@ class HomePage extends StatelessWidget {
             children: [
               ...List.generate(
                   homeData.length,
-                  (index) => CustomListTile(
-                        onTab: () {
-                          Get.toNamed(AppRoutes.CounterPage);
-                        },
-                        title: homeData[index].title,
-                        leading: homeData[index].icon,
+                  (index) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: CustomListTile(
+                          onTab: () {
+                            switchScreen(index);
+                          },
+                          title: homeData[index].title,
+                          leading: homeData[index].icon,
+                        ),
                       ))
             ],
           ),
         ));
+  }
+
+  switchScreen(int index) {
+    switch (index) {
+      case 0:
+        Get.toNamed(AppRoutes.CounterPage);
+        break;
+      case 1:
+        Get.toNamed(AppRoutes.TodoPage);
+        break;
+      default:
+    }
   }
 }
